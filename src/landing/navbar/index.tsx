@@ -9,7 +9,7 @@ import { cn } from "../../libs/cn";
 
 const AppNavbar = () => {
   const [expandMobileNav, setExpandMobileNav] = useState<boolean>(false);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null!); // FIX: Ensure menuRef matches expected type
 
   const updateExpandMobileNav = () => setExpandMobileNav((prev) => !prev);
 
@@ -39,14 +39,14 @@ const AppNavbar = () => {
       <nav className="font-poppins py-6 fixed top-0 left-0 right-0 z-30">
         <div className="bg-white shadow-md absolute top-0 left-0 right-0 z-20">
           <div className="container flex justify-between items-center gap-10">
-          <div className="flex justify-center items-center h-24">
-  <h1
-    className="cursor-pointer text-3xl font-bold text-blue-800"
-    onClick={() => (window.location.href = "/")}
-  >
-    SaaraKhalid
-  </h1>
-</div>
+            <div className="flex justify-center items-center h-24">
+              <h1
+                className="cursor-pointer text-3xl font-bold text-blue-800"
+                onClick={() => (window.location.href = "/")}
+              >
+                SaaraKhalid
+              </h1>
+            </div>
 
             <section className="mb-4 flex-1 max-w-[1000px] hidden lg:flex items-center gap-20 justify-end">
               <NavItemsWrapper />
