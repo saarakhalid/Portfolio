@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+	/* --font-mono: "Space Mono", sans-serif; */
+	--font-poppins: "Poppins", sans-serif;
+	
+}
+
+* {
+	scroll-behavior: smooth;
+	
+  }
+  
+  body{
+	  overflow-x: hidden;
+	 background-color: rgba(241, 239, 239, 0.511);
+  }
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    
+}
+
+
+@media (max-width: 1400px) {
+    .container {
+      width: 90%;
+      overflow-y: hidden;
+    }
+
+  }
