@@ -31,100 +31,87 @@ const skills: Skill[] = [
 
 const AboutMe: React.FC = () => {
   return (
-    <div className="bg-gray text-black font-poppins py-12 px-6 md:px-20 mt-12">
+    <div className="container bg-gray text-black font-poppins py-12 px-2 md:px- mt-12 overflow-x-hidden">
       {/* Header Section */}
-      <div className="grid md:grid-cols-2 gap-12 items-center ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
           <h2 className="font-poppins text-5xl font-bold mb-2">
             About <span className="text-blue-800">Me</span>
           </h2>
-          <p className="text-gray-600 mb-22">Web developer with 2+ years of experience.</p>
+          <p className="text-gray-600">Web developer with 2+ years of experience.</p>
+          
+          {/* Button and Social Icons */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+            {/* Button */}
+            <button className="bg-blue-800 text-white px-6 py-2 flex items-center gap-2 font-bold">
+              <a href="https://flowcv.com/resume/rt7j8wdbtu" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <Icon icon="fa-solid:download" /> Download CV
+              </a>
+            </button>
+            {/* Social Icons */}
+            <div className="flex gap-4 mt-4 sm:mt-0">
+              <a href="https://www.linkedin.com/in/saara-khalid-5aba98316/" className="icon-animate">
+                <Icon icon="uil:linkedin" />
+              </a>
+              <a href="https://github.com/saarakhalid" className="icon-animate">
+                <Icon icon="uil:github" />
+              </a>
+            </div>
+          </div>
         </div>
 
         <div className="font-poppins text-gray-600 max-w-lg text-1xl">
           <p>
             I’ve always been fascinated by technology and how it shapes the way we interact with the world.
             My journey into web development started with a curiosity about how websites are built and a desire
-            to create something interactive and meaningful, and it has evolved into a full-fledged passion for front-end technologies like React, JavaScript, and Tailwind CSS.
+            to create something interactive and meaningful.
           </p>
-
           
+          {/* Tech Stack Section */}
           <div className="mt-10">
             <h3 className="text-2xl font-medium text-gray-800 mb-4 text-center">Tech Stack</h3>
-            <div className="flex justify-center gap-8 text-4xl text-blue-800">
-              <div className="p-3 border border-gray-400 rounded-full">
-                <Icon icon="akar-icons:html-fill" />
-              </div>
-              <div className="p-3 border border-gray-400 rounded-full">
-                <Icon icon="cib:css3" />
-              </div>
-              <div className="p-3 border border-gray-400 rounded-full">
-                <Icon icon="akar-icons:javascript-fill" />
-              </div>
-              <div className="p-3 border border-gray-400 rounded-full">
-                <Icon icon="logos:react" />
-              </div>
-              <div className="p-3 border border-gray-400 rounded-full">
-                <Icon icon="simple-icons:tailwindcss" />
-              </div>
+            <div className="flex justify-center gap-4 md:gap-8 text-4xl text-blue-800 flex-wrap">
+              {["akar-icons:html-fill", "cib:css3", "akar-icons:javascript-fill", "logos:react", "simple-icons:tailwindcss"].map((icon, index) => (
+                <div key={index} className="p-3 border border-gray-400 rounded-full">
+                  <Icon icon={icon} />
+                </div>
+              ))}
             </div>
-            
           </div>
         </div>
       </div>
 
-      {/* Button and Social Icons Section - Below Tech Stack */}
-      <div className="flex justify-start gap-4 mt-0 ">
-  <button className="bg-blue-800 text-white px-6 py-2 flex items-center gap-2 font-bold">
-    <Icon icon="fa-solid:download" /> Download CV
-  </button>
+      <style>{`
+        .icon-animate {
+          width: 48px;
+          height: 48px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          font-size: 24px;
+          transition: transform 0.3s ease-in-out, background 0.3s;
+          border: 2px solid #d1d5db;
+        }
 
-  <div className="flex gap-4">
-    <a href="https://www.linkedin.com/in/saara-khalid-5aba98316/" className="icon-animate">
-      <Icon icon="uil:linkedin" />
-    </a>
-    <a href="https://github.com/saarakhalid" className="icon-animate">
-      <Icon icon="uil:github" />
-    </a>
-  </div>
-</div>
+        .icon-animate:hover {
+          transform: scale(1.2);
+          background: #1e3a8a;
+        }
 
-<style>{`
-  .icon-animate {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    font-size: 24px;
-    position: relative;
-    transition: background 0.3s;
-    border: 2px solid #d1d5db; /* gray-400 */
-    animation: iconSlide 4s infinite alternate;
-  }
+        .icon-animate svg {
+          color: #1e3a8a;
+          transition: color 0.3s;
+        }
 
-  .icon-animate svg {
-    color: #1e3a8a; /* blue-800 */
-  }
-
-  @keyframes iconSlide {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(15px);
-    }
-    100% {
-      transform: translateX(30px);
-    }
-  }
-`}</style>
-
+        .icon-animate:hover svg {
+          color: #ffffff;
+        }
+      `}</style>
 
       {/* About Me Content */}
-      <div className="mt-10 grid md:grid-cols-2 gap-16 ">
-        {/* Personal Info */}
+      <div className="mt-10 grid md:grid-cols-2 gap-16">
+        {/* Technical Skills */}
         <div className="mt-8">
           <h2 className="text-black text-xl font-semibold mb-6 text-center">
             Technical Skills
@@ -145,21 +132,21 @@ const AboutMe: React.FC = () => {
           ))}
         </div>
 
-        {/* Skills Section with Circular Progress */}
+        {/* Professional Skills */}
         <div className="mt-6">
           <h2 className="text-black text-xl font-semibold mb-10 text-center">
             Professional Skills
           </h2>
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-2">
             {skills.map((skill, index) => (
-              <div key={index} className="text-center border-2 border-blue-800 p-4 rounded-lg">
-                <div className="w-20 h-20 mx-auto">
+              <div key={index} className="text-center border-2 border-blue-800 p-4 rounded-lg w-full">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto">
                   <CircularProgressbar
                     value={skill.level}
                     text={`${skill.level}%`}
                     styles={{
-                      path: { stroke: "#1E40AF" }, // blue-800
-                      text: { fill: "#1E40AF", fontSize: "22px" }, // blue-800
+                      path: { stroke: "#1E40AF" },
+                      text: { fill: "#1E40AF", fontSize: "18px" },
                       trail: { stroke: "#e2e8f0" },
                     }}
                   />

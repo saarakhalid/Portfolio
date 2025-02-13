@@ -1,15 +1,13 @@
-import { useNavigate } from "react-router-dom";
 import { Button } from "@nextui-org/react";
 import { Icon } from "@iconify-icon/react";
 import { motion, Variants } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-
+import { useState, useRef, useEffect } from "react";
 import { NAV_ITEMS } from "./config";
 import { cn } from "../../libs/cn";
 
 const AppNavbar = () => {
   const [expandMobileNav, setExpandMobileNav] = useState<boolean>(false);
-  const mobileMenuRef = useRef<HTMLDivElement>(null!); // FIX: Ensure menuRef matches expected type
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null); // Allow null here
 
   const updateExpandMobileNav = () => setExpandMobileNav((prev) => !prev);
 
@@ -68,7 +66,7 @@ const AppNavbar = () => {
         <MobileMenu
           expandMobileState={expandMobileNav}
           updateExpandMobileNav={updateExpandMobileNav}
-          menuRef={mobileMenuRef}
+          menuRef={mobileMenuRef} // Pass the mobileMenuRef
         />
       </nav>
     </div>
@@ -82,28 +80,22 @@ interface NavItemsWrapperProps {
 }
 
 const NavItemsWrapper = ({ updateExpandMobileNav }: NavItemsWrapperProps) => {
-  const navigate = useNavigate();
-
-  const handleNavigation = (path: string) => {
-    if (updateExpandMobileNav) updateExpandMobileNav();
-    navigate(path);
-  };
-
   return (
     <div className="flex flex-row lg:items-center space-x-18 relative">
       {NAV_ITEMS.map((item) => (
         <div key={item.path} className="relative">
-          <span
+          <a
+            href={item.path} // Use href to scroll to sections
             className={cn(
               "text-sm md:text-lg font-semibold transition duration-300 cursor-pointer pb-2",
               window.location.pathname === item.path
                 ? "text-[#0F2F8F] border-b-2 border-blue-600"
                 : "text-[#3E5879] hover:text-[#0F2F8F] hover:border-b-2 hover:border-blue-600"
             )}
-            onClick={() => handleNavigation(item.path)}
+            onClick={() => updateExpandMobileNav && updateExpandMobileNav()}
           >
             {item.label}
-          </span>
+          </a>
         </div>
       ))}
     </div>
@@ -113,7 +105,7 @@ const NavItemsWrapper = ({ updateExpandMobileNav }: NavItemsWrapperProps) => {
 interface MobileMenuProps {
   expandMobileState: boolean;
   updateExpandMobileNav: () => void;
-  menuRef: React.RefObject<HTMLDivElement>;
+  menuRef: React.RefObject<HTMLDivElement | null>; // Allow null here
 }
 
 const MobileMenu = ({
@@ -121,7 +113,6 @@ const MobileMenu = ({
   updateExpandMobileNav,
   menuRef,
 }: MobileMenuProps) => {
-  const navigate = useNavigate();
   const [isMenuHidden, setMenuHidden] = useState(!expandMobileState);
 
   const variants: Variants = {
@@ -157,11 +148,6 @@ const MobileMenu = ({
     setMenuHidden(false);
   }
 
-  const handleNavigation = (path: string) => {
-    updateExpandMobileNav();
-    navigate(path);
-  };
-
   return (
     <motion.div
       initial="minimize"
@@ -174,7 +160,7 @@ const MobileMenu = ({
           hidden: isMenuHidden,
         }
       )}
-      ref={menuRef}
+      ref={menuRef} // Use menuRef here
     >
       <Button
         className="self-end"
@@ -188,18 +174,19 @@ const MobileMenu = ({
       </Button>
       <div className="flex flex-col gap-6">
         {NAV_ITEMS.map((item) => (
-          <span
+          <a
             key={item.path}
+            href={item.path} // Use href to scroll to sections
             className={cn(
               "text-base sm:text-lg transition-colors duration-300 cursor-pointer font-semibold",
               window.location.pathname === item.path
                 ? "text-[#0F2F8F] border-b-2 border-blue-600"
                 : "hover:text-[#171D4E] hover:border-b-2 hover:border-blue-600"
             )}
-            onClick={() => handleNavigation(item.path)}
+            onClick={() => updateExpandMobileNav()}
           >
             {item.label}
-          </span>
+          </a>
         ))}
       </div>
     </motion.div>

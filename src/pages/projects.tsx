@@ -5,7 +5,7 @@ const projects = [
   {
     image: "mec.png",
     name: "Mosahl Engineering Consultants",
-    description: "A leading firm specializing in innovative engineering solutions. With a strong focus on quality and efficiency, MEC provides tailored services to meet the unique needs of its clients, ensuring excellence in every project.",
+    description: "MEC delivers innovative planning, engineering, and construction management solutions to meet the infrastructure needs of today and tomorrow.",
     demoLink: "https://mosahlengineering.com/",
   },
   {

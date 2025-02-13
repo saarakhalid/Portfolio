@@ -1,11 +1,11 @@
 export const NAV_ITEMS = [
 	{
-	  label: "About",
-	  path: "#about", 
+	  label: "Home",
+	  path: "#home", 
 	},
 	{
-	  label: "Skills",
-	  path: "#skills",
+	  label: "About",
+	  path: "#about",
 	},
 	{
 	  label: "Projects",
