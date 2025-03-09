@@ -5,12 +5,14 @@ const PortfolioCard: React.FC = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-white h-3/3 relative mt-18">
       <div className="absolute top-0 left-0 w-full h-1/2 bg-gray-200 "></div>
       <div className="relative z-10 flex flex-col items-center text-center">
-        <div className="w-68 h-68 rounded-full overflow-hidden border-8 border-white ">
-          <img
-            src="1.png" 
-            alt="Profile"
-            className="w-full h-full object-cover"
-          />
+      <div className="w-70 h-68 rounded-full overflow-hidden border-8 border-white flex items-center justify-center">
+  <img
+    src="bg.png" 
+    alt="Profile"
+    className="w-full h-full object-cover object-center mr-10  "
+  />
+
+
         </div>
         <h1 className="text-3xl font-light mt-6">
           Hello I'm <span className="font-bold text-blue-800">Saara Khalid</span>
