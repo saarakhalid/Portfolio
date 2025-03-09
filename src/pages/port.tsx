@@ -7,9 +7,9 @@ const PortfolioCard: React.FC = () => {
       <div className="relative z-10 flex flex-col items-center text-center">
       <div className="w-70 h-68 rounded-full overflow-hidden border-8 border-white flex items-center justify-center">
   <img
-    src="bg.png" 
+    src="bgg.jpeg" 
     alt="Profile"
-    className="w-full h-full object-cover object-center mr-10  "
+    className="w-full h-full object-cover mr-10"
   />
 
 
